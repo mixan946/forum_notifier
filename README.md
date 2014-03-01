@@ -1,4 +1,4 @@
-Wiki Notifier
+Forum Notifier
 ============
 
 Allow to send wiki content to users when checkbox is checked.
