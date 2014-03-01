@@ -1,0 +1,28 @@
+<% if request.path.include?("board") && 
+     Setting.notified_events.include?('message_posted') %>
+  <!-- FORUM NOTIFIER SCRIPT BEGIN -->
+  <style>
+    #forum_notify_groups{
+      display: none;
+    }
+    #forum_notify_groups .block{
+      display: block;
+    }
+  </style>
+  <script>
+      $("#add-message .box p:last")
+         .after("<%= j render("shared/forum_notifier_checkboxes")%>");
+
+      $("#forum_notifier_notify").on('change', function(){
+        if($(this).is(":checked")){
+          $("#forum_notify_groups").fadeIn();
+        }else{
+          $("#forum_notify_groups").fadeOut();      
+        }
+      });
+      $("#forum_notifier_check_all").on('change', function(){
+        $("#forum_notify_groups input").prop('checked', $(this).is(":checked"));
+      });
+ </script>
+ <!-- FORUM NOTIFIER SCRIPT END --> 
+<% end %>

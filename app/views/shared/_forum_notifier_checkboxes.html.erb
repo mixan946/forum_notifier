@@ -1,0 +1,16 @@
+<p>
+  <label><%= t(:notify_users, :scope => 'forum_notifier' ) %></label>
+  <%= check_box_tag "forum_notifier[notify]" %>
+  <%= field_set_tag "Notify Users", :id => "forum_notify_groups" do %>
+    <label class="block">
+      <%= check_box_tag "", "", false, :id => "forum_notifier_check_all" %>
+      CHECK ALL
+    </label>
+    <% User.active.order(:firstname,:lastname).each do |user| %>
+      <label class="block">
+        <%= check_box_tag "forum_notifier[users][]", user.id %>      
+        <%= user.name %>
+      </label>
+    <% end %>
+  <% end %>
+</p>
